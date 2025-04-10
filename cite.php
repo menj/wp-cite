@@ -3,127 +3,175 @@
 Plugin Name: Cite
 Plugin URI: http://wordpress.org/plugins/cite
 Description: Help readers know how to cite your article correctly - use Cite plugin to display a box at the bottom of each page/post with reference information.
-Version: 1.2.2
+Version: 1.2.3
 Author: Enigma Plugins
 Author URI: http://enigmaplugins.com/
+Text Domain: cite
 */
 
+// Security: Prevent direct access
+defined('ABSPATH') || exit;
 
-// Localization / Internationalization
-load_plugin_textdomain('cite', false, dirname(plugin_basename(__FILE__)) . '/languages/');
-
-
-// Default settings
-$wpcp_default = apply_filters('wpcp_default_setting', array(
-    'setting' => __('Cite this article as: {author}, "{title}," in <em>{sitename}</em>, {publication_date}, {permalink}.','cite')
-        ));
-
-
-// Pulling the default settings from DB + Fallback
-$wpcp_setting = wp_parse_args(get_option('wpcp_setting'), $wpcp_default);
-
-
-// This function registering the settings in DB
-add_action('admin_init', 'wpcp_register_setting');
-
-function wpcp_register_setting() {
-    register_setting('wpcp_setting', 'wpcp_setting');
+// Localization
+add_action('plugins_loaded', 'cite_load_textdomain');
+function cite_load_textdomain() {
+    load_plugin_textdomain('cite', false, dirname(plugin_basename(__FILE__)) . '/languages/');
 }
 
-// Adding settings page in wp menu
-add_action('admin_menu', 'wpcp_setting_menu');
-
-function wpcp_setting_menu() {
-    add_menu_page(__('Cite Settings', 'cite'), __('Cite', 'cite'), 'manage_options', 'wp-cite', 'wpcp_setting_page', plugin_dir_url(__FILE__) . 'cite-icon.png', 55);
+// Default settings with filter
+function cite_default_settings() {
+    return apply_filters('cite_default_settings', array(
+        'setting' => __('Cite this article as: {author}, "{title}," in <em>{sitename}</em>, {publication_date}, {permalink}.', 'cite')
+    ));
 }
 
-// This function checks to see if we just updated the settings
-// if so, it displays the "updated" message.
-function wpcp_setting_update_check() {
-    global $wpcp_setting;
-    if (isset($wpcp_setting['update'])) {
-        echo '<div style="margin-top:20px;" class="updated fade" id="message"><p>' . __('Cite Settings', 'cite') . ' <strong>' . $wpcp_setting['update'] . '</strong></p></div>';
-        unset($wpcp_setting['update']);
-        update_option('wpcp_setting', $wpcp_setting);
-    }
+// Settings initialization
+add_action('admin_init', 'cite_register_settings');
+function cite_register_settings() {
+    register_setting('cite_settings', 'cite_settings', array(
+        'sanitize_callback' => 'cite_sanitize_settings'
+    ));
+    
+    add_option('cite_settings', cite_default_settings());
 }
 
-// Display admin page
-function wpcp_setting_page() {
-    echo '<div class="wrap">';
-
-    //	The cite adding form
-    wpcp_admin();
-
-    echo '</div>';
+// Sanitization callback
+function cite_sanitize_settings($input) {
+    $input['setting'] = wp_kses_post($input['setting'] ?? '');
+    return $input;
 }
 
-// Admin page
-function wpcp_admin() {
+// Admin menu
+add_action('admin_menu', 'cite_admin_menu');
+function cite_admin_menu() {
+    add_menu_page(
+        __('Cite Settings', 'cite'),
+        __('Cite', 'cite'),
+        'manage_options',
+        'cite-settings',
+        'cite_settings_page',
+        plugin_dir_url(__FILE__) . 'cite-icon.png',
+        55
+    );
+}
+
+// Settings page
+function cite_settings_page() {
+    if (!current_user_can('manage_options')) return;
     ?>
-    <?php wpcp_setting_update_check(); ?>
-    <form method="post" action="options.php">
-        <?php settings_fields('wpcp_setting'); ?>
-        <?php global $wpcp_setting; ?>
-        <div class="wpcp-admin">
-            <h2><?php _e('Cite Settings', 'cite') ?></h2>
-            <p><?php _e('Help readers know how to cite your article correctly. Enter the reference text you wish to appear in the cite box using the editor below. Add the cite box to any page/post using shortcode', 'cite') ?> <code>[cite]</code></p>
-            <p><textarea cols="80" rows="5" name="wpcp_setting[setting]" id="wpcp_setting[setting]" class="wpcp-textarea"><?php echo $wpcp_setting[setting]; ?></textarea></p>
-            <p class="wpcp-templates-info"><span><?php _e('Available templates tags:', 'cite') ?></span><br>
-              {author} - <?php _e('the post/page author','cite') ?><br>
-              {title} - <?php _e('the title of your post/page', 'cite') ?><br>
-              {sitename} - <?php _e('your site name taken from Settings > General', 'cite') ?><br>
-              {publication_date} - <?php _e('date the page/post was published', 'cite') ?><br>
-              {permalink} - <?php _e('the permalink of the page/post being accessed', 'cite') ?><br>
-              {date} - <?php _e('the current date, if "date accessed" is desired', 'cite') ?><br>
-              <?php _e('Also, you may insert words, HTML tags, and punctuation.', 'cite') ?><br><br>
-              <b><?php _e('Samples', 'cite') ?></b> (<?php _e('similar to', 'cite') ?> <a href="http://www.chicagomanualofstyle.org/tools_citationguide.html" target="_blank"><?php _e('Chicago-style notes', 'cite') ?></a>):<br>
-              <?php _e('Blog post:', 'cite') ?> {author}, "{title}," {sitename}, {publication_date}, {permalink}.<br>
-              <?php _e('Book chapter:', 'cite') ?> {author}, "{title}," in {sitename}, ed. Jack Dougherty (Ann Arbor: Michigan Publishing, 2014), {permalink}.</p>
-            <input type="hidden" name="wpcp_setting[update]" value="<?php _e('UPDATED', 'cite') ?>" />
-            <input type="submit" class="button-primary" value="<?php _e('Save Changes', 'cite') ?>" />
-    </form>
+    <div class="wrap">
+        <h1><?php esc_html_e('Cite Settings', 'cite'); ?></h1>
+        <?php settings_errors(); ?>
+        <form method="post" action="options.php">
+            <?php 
+            settings_fields('cite_settings');
+            $settings = get_option('cite_settings', cite_default_settings());
+            ?>
+            <div class="cite-admin-settings">
+                <p><?php esc_html_e('Help readers know how to cite your article correctly. Use the template tags below:', 'cite'); ?></p>
+                
+                <textarea name="cite_settings[setting]" 
+                    id="cite_settings_setting" 
+                    class="large-text code" 
+                    rows="5"><?php echo esc_textarea($settings['setting']); ?></textarea>
+
+                <div class="cite-template-tags">
+                    <p><strong><?php esc_html_e('Available template tags:', 'cite'); ?></strong></p>
+                    <ul>
+                        <li><code>{author}</code> - <?php esc_html_e('Post/page author', 'cite'); ?></li>
+                        <li><code>{title}</code> - <?php esc_html_e('Post/page title', 'cite'); ?></li>
+                        <li><code>{sitename}</code> - <?php esc_html_e('Site name', 'cite'); ?></li>
+                        <li><code>{publication_date}</code> - <?php esc_html_e('Publish date', 'cite'); ?></li>
+                        <li><code>{permalink}</code> - <?php esc_html_e('Full URL to post', 'cite'); ?></li>
+                        <li><code>{date}</code> - <?php esc_html_e('Current date', 'cite'); ?></li>
+                    </ul>
+                </div>
+                
+                <?php submit_button(); ?>
+            </div>
+        </form>
     </div>
     <?php
 }
 
-// Registering shortcode [cite]
+// Shortcode implementation
 add_shortcode('cite', 'cite_shortcode');
-
 function cite_shortcode() {
-    global $wpcp_setting;
-    // Getting admin preferred date format for current date
-	if(!function_exists('displayTodaysDate')){
-    function displayTodaysDate() {
-        return date_i18n(get_option('date_format'));
-	}
-	}
-
-    $find_string = array('{author}','{sitename}', '{title}', '{date}', '{publication_date}', '{permalink}');
-    $replace_string = array(get_the_author(), get_bloginfo('name'), get_the_title(), displayTodaysDate(), get_the_date(), '<a href="' . get_permalink() . '">' . get_permalink() . '</a>');
-    $edited_setting = str_replace($find_string, $replace_string, $wpcp_setting['setting']);
-    return '<div class="wpcp">' . $edited_setting . '</div>';
-}
-// Adding some makeup
-add_action('wp_head', 'wpcp_head');
-
-function wpcp_head() {
-    ?>
-    <style type="text/css">
-        .wpcp {background: #f7f7f7; padding: 16px 20px; border-radius: 5px; line-height: 20px;}
-    </style>
-    <?php
+    $settings = get_option('cite_settings', cite_default_settings());
+    $template = $settings['setting'] ?? '';
+    
+    // Replacement data
+    $replacements = array(
+        '{author}' => get_the_author(),
+        '{title}' => get_the_title(),
+        '{sitename}' => get_bloginfo('name'),
+        '{publication_date}' => get_the_date(),
+        '{permalink}' => esc_url(get_permalink()),
+        '{date}' => cite_current_date()
+    );
+    
+    // Process template
+    $output = str_replace(array_keys($replacements), array_values($replacements), $template);
+    
+    return sprintf(
+        '<div class="cite-box">%s</div>',
+        wp_kses_post($output)
+    );
 }
 
-add_action('admin_head', 'wpcp_admin_head');
+// Helper function for current date
+function cite_current_date() {
+    return date_i18n(get_option('date_format'));
+}
 
-function wpcp_admin_head() {
-    ?>
-    <style type="text/css">
-        .wpcp-admin {width: 700px;}
-        .wpcp-textarea {width: 100%; font-family: courier;}
-        .wpcp-templates-info {margin: 0 0 40px;}
-        .wpcp-templates-info span {display: inline-block; margin-bottom: 5px; font-weight: bold;}
-    </style>
-    <?php
+// Enqueue styles
+add_action('wp_enqueue_scripts', 'cite_frontend_styles');
+function cite_frontend_styles() {
+    wp_register_style('cite-styles', false);
+    wp_enqueue_style('cite-styles');
+    
+    $css = "
+        .cite-box {
+            background: #f7f7f7;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+            border-left: 4px solid #0073aa;
+            font-size: 0.9em;
+        }
+        .cite-box em {
+            font-style: italic;
+        }
+    ";
+    
+    wp_add_inline_style('cite-styles', $css);
+}
+
+// Admin styles
+add_action('admin_enqueue_scripts', 'cite_admin_styles');
+function cite_admin_styles($hook) {
+    if ($hook !== 'toplevel_page_cite-settings') return;
+    
+    wp_register_style('cite-admin', false);
+    wp_enqueue_style('cite-admin');
+    
+    $css = "
+        .cite-admin-settings {
+            max-width: 700px;
+            margin-top: 2rem;
+        }
+        .cite-template-tags {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #f7f7f7;
+            border-radius: 4px;
+        }
+        .cite-template-tags code {
+            background: #fff;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+    ";
+    
+    wp_add_inline_style('cite-admin', $css);
 }
