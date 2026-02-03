@@ -1,0 +1,152 @@
+/**
+ * Cite Plugin - Gutenberg Block Editor Styles
+ * Version: 2.1.5
+ */
+
+/* Gutenberg Block Editor Styles */
+
+.wpcp-citation-block-editor {
+    margin: 20px 0;
+}
+
+.wpcp-citation-preview {
+    background: #ffffff;
+    border: 2px solid #2271b1;
+    border-radius: 8px;
+    padding: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.wpcp-preview-header {
+    background: linear-gradient(135deg, #2271b1 0%, #135e96 100%);
+    color: #ffffff;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+}
+
+.wpcp-preview-header .dashicons {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+}
+
+.wpcp-preview-style {
+    margin-left: auto;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.wpcp-preview-content {
+    padding: 20px;
+}
+
+.wpcp-preview-text {
+    color: #50575e;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0 0 15px 0;
+}
+
+.wpcp-preview-features {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.wpcp-feature-badge {
+    background: #f0f6fc;
+    color: #2271b1;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid #c3dcf5;
+}
+
+.wpcp-preview-overrides {
+    background: #fcf9e8;
+    border-left: 4px solid #dba617;
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.wpcp-preview-overrides strong {
+    display: block;
+    margin-bottom: 8px;
+    color: #996800;
+}
+
+.wpcp-preview-overrides span {
+    display: block;
+    color: #50575e;
+    margin-bottom: 4px;
+}
+
+.wpcp-preview-footer {
+    background: #f6f7f7;
+    border-top: 1px solid #dcdcde;
+    padding: 12px 20px;
+}
+
+.wpcp-preview-footer p {
+    margin: 0;
+    color: #646970;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.wpcp-preview-footer .dashicons {
+    color: #2271b1;
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+}
+
+/* Inspector Controls Styling */
+.components-panel__body.is-opened .components-base-control {
+    margin-bottom: 20px;
+}
+
+.components-base-control__help {
+    font-size: 12px;
+    color: #757575;
+    margin-top: 8px;
+}
+
+/* Block Toolbar Enhancements */
+.wp-block[data-type="cite/block"] {
+    border: 2px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.wp-block[data-type="cite/block"].is-selected {
+    border-color: #2271b1;
+}
+
+/* Responsive Preview */
+@media (max-width: 782px) {
+    .wpcp-preview-header {
+        font-size: 14px;
+        padding: 12px 15px;
+    }
+    
+    .wpcp-preview-content {
+        padding: 15px;
+    }
+    
+    .wpcp-preview-style {
+        font-size: 11px;
+        padding: 3px 10px;
+    }
+}

@@ -1,0 +1,351 @@
+# Cite Plugin - Translation Template
+# Copyright (C) 2026 MENJ
+# This file is distributed under the same license as the Cite plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Cite 2.0.1\n"
+"Report-Msgid-Bugs-To: support@menj.net\n"
+"POT-Creation-Date: 2026-01-29 12:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Manual\n"
+"X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e;esc_attr__;esc_attr_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: cite.php:49
+msgid "Cite this article as: {author}, \"{title},\" in <em>{sitename}</em>, {publication_date}, {permalink}."
+msgstr ""
+
+#: cite.php:114
+msgid "Cite Settings"
+msgstr ""
+
+#: cite.php:115
+msgid "Cite"
+msgstr ""
+
+#: cite.php:125 cite.php:126
+msgid "Analytics"
+msgstr ""
+
+#: cite.php:136 cite.php:303
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: cite.php:141
+msgid "Settings Saved"
+msgstr ""
+
+#: cite.php:155
+msgid "Save Changes"
+msgstr ""
+
+#: cite.php:170
+msgid "General Settings"
+msgstr ""
+
+#: cite.php:171
+msgid "Display Options"
+msgstr ""
+
+#: cite.php:172
+msgid "Metadata & SEO"
+msgstr ""
+
+#: cite.php:173
+msgid "Preview"
+msgstr ""
+
+#: cite.php:178
+msgid "Citation Template"
+msgstr ""
+
+#: cite.php:179
+msgid "Customize the default citation format using template tags below."
+msgstr ""
+
+#: cite.php:184
+msgid "Available Template Tags:"
+msgstr ""
+
+#: cite.php:186
+msgid "Post author (supports guest-author custom field & Co-Authors Plus)"
+msgstr ""
+
+#: cite.php:187
+msgid "Site name from WordPress settings"
+msgstr ""
+
+#: cite.php:188
+msgid "Post/page title"
+msgstr ""
+
+#: cite.php:189
+msgid "Current date (last accessed)"
+msgstr ""
+
+#: cite.php:190
+msgid "Original publication date"
+msgstr ""
+
+#: cite.php:191
+msgid "Permanent URL to the post"
+msgstr ""
+
+#: cite.php:192
+msgid "DOI from custom field"
+msgstr ""
+
+#: cite.php:193
+msgid "ISBN from custom field"
+msgstr ""
+
+#: cite.php:194
+msgid "ISSN from custom field"
+msgstr ""
+
+#: cite.php:199
+msgid "Multiple Authors"
+msgstr ""
+
+#: cite.php:201
+msgid "Show \"et al.\" after this many authors:"
+msgstr ""
+
+#: cite.php:204
+msgid "When using Co-Authors Plus with many authors, use \"et al.\" after this number. Enter 999 to always show all authors."
+msgstr ""
+
+#: cite.php:210
+msgid "Display Settings"
+msgstr ""
+
+#: cite.php:215
+msgid "Automatically display citation box (no shortcode needed)"
+msgstr ""
+
+#: cite.php:217
+msgid "When enabled, citation box will appear automatically on selected post types."
+msgstr ""
+
+#: cite.php:221
+msgid "Display Position"
+msgstr ""
+
+#: cite.php:224
+msgid "Top of content"
+msgstr ""
+
+#: cite.php:228
+msgid "Bottom of content"
+msgstr ""
+
+#: cite.php:233
+msgid "Post Types"
+msgstr ""
+
+#: cite.php:234
+msgid "Select which post types should display the citation box:"
+msgstr ""
+
+#: cite.php:245
+msgid "Exclude Posts/Pages"
+msgstr ""
+
+#: cite.php:247
+msgid "Enter post IDs to exclude, separated by commas (e.g., 1, 5, 10)"
+msgstr ""
+
+#: cite.php:253
+msgid "Show expand/collapse toggle"
+msgstr ""
+
+#: cite.php:255
+msgid "Allow users to hide/show the citation box."
+msgstr ""
+
+#: cite.php:261
+msgid "Metadata & SEO Settings"
+msgstr ""
+
+#: cite.php:266
+msgid "Add Google Scholar meta tags"
+msgstr ""
+
+#: cite.php:268
+msgid "Helps Google Scholar index your academic content correctly."
+msgstr ""
+
+#: cite.php:274
+msgid "Enable citation analytics"
+msgstr ""
+
+#: cite.php:276
+msgid "Track which citation formats are most popular. View analytics in the Analytics tab."
+msgstr ""
+
+#: cite.php:282
+msgid "Preview Citation Box"
+msgstr ""
+
+#: cite.php:283
+msgid "This is a live preview of how the citation box will appear on your site."
+msgstr ""
+
+#: cite.php:287
+msgid "Sample Content"
+msgstr ""
+
+#: cite.php:288
+msgid "This is a sample post to demonstrate the citation box appearance. The citation box will appear below this content."
+msgstr ""
+
+#: cite.php:295
+msgid "Sample Article Title"
+msgstr ""
+
+#: cite.php:310
+msgid "Analytics table not found. Please deactivate and reactivate the plugin."
+msgstr ""
+
+#: cite.php:353
+msgid "Citation Analytics"
+msgstr ""
+
+#: cite.php:358
+msgid "Most Popular Citation Styles"
+msgstr ""
+
+#: cite.php:362
+msgid "Citation Style"
+msgstr ""
+
+#: cite.php:363
+msgid "Usage Count"
+msgstr ""
+
+#: cite.php:375
+msgid "No data available yet."
+msgstr ""
+
+#: cite.php:383
+msgid "Most Cited Posts"
+msgstr ""
+
+#: cite.php:387
+msgid "Post Title"
+msgstr ""
+
+#: cite.php:388
+msgid "Citations"
+msgstr ""
+
+#: cite.php:413
+msgid "Export Format Statistics"
+msgstr ""
+
+#: cite.php:417
+msgid "Export Format"
+msgstr ""
+
+#: cite.php:418
+msgid "Downloads"
+msgstr ""
+
+#: cite.php:430
+msgid "No export data available yet."
+msgstr ""
+
+#: cite.php:562
+msgid "Citation Information"
+msgstr ""
+
+#: cite.php:566
+msgid "Cite Icon"
+msgstr ""
+
+#: cite.php:567
+msgid "Cite This As:"
+msgstr ""
+
+#: cite.php:568
+msgid "Select citation style"
+msgstr ""
+
+#: cite.php:580
+msgid "Copy citation"
+msgstr ""
+
+#: cite.php:581
+msgid "Copy citation to clipboard"
+msgstr ""
+
+#: cite.php:591
+msgid "Export citation"
+msgstr ""
+
+#: cite.php:592
+msgid "Export citation in various formats"
+msgstr ""
+
+#: cite.php:599
+msgid "Export options"
+msgstr ""
+
+#: cite.php:600
+msgid "Export as BibTeX"
+msgstr ""
+
+#: cite.php:601
+msgid "Export as RIS"
+msgstr ""
+
+#: cite.php:602
+msgid "Export as EndNote"
+msgstr ""
+
+#: cite.php:607
+msgid "Toggle citation visibility"
+msgstr ""
+
+#: cite.php:617
+msgid "Citation copied!"
+msgstr ""
+
+#: cite.php:849
+msgid "Invalid post ID"
+msgstr ""
+
+#: cite.php:857
+msgid "Analytics disabled"
+msgstr ""
+
+#: cite.php:862
+msgid "Post not found"
+msgstr ""
+
+#: cite.php:869
+msgid "Invalid citation style"
+msgstr ""
+
+#: cite.php:876
+msgid "Invalid action type"
+msgstr ""
+
+#: cite.php:884
+msgid "Already tracked"
+msgstr ""
+
+#: cite.php:904
+msgid "Failed to track analytics"
+msgstr ""
+
+#: cite.php:907
+msgid "Analytics tracked successfully"
+msgstr ""
