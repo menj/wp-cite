@@ -1,9 +1,7 @@
 /**
  * Cite Plugin - Gutenberg Block Editor Styles
- * Version: 2.1.5
+ * Version: 2.8.0
  */
-
-/* Gutenberg Block Editor Styles */
 
 .wpcp-citation-block-editor {
     margin: 20px 0;
@@ -11,15 +9,15 @@
 
 .wpcp-citation-preview {
     background: #ffffff;
-    border: 2px solid #2271b1;
+    border: 2px solid #64748b;
     border-radius: 8px;
     padding: 0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     overflow: hidden;
 }
 
-.wpcp-preview-header {
-    background: linear-gradient(135deg, #2271b1 0%, #135e96 100%);
+.wpcp-block-preview-header {
+    background: linear-gradient(135deg, #475569 0%, #334155 100%);
     color: #ffffff;
     padding: 15px 20px;
     display: flex;
@@ -28,7 +26,7 @@
     font-size: 16px;
 }
 
-.wpcp-preview-header .dashicons {
+.wpcp-block-preview-header .dashicons {
     font-size: 24px;
     width: 24px;
     height: 24px;
@@ -43,7 +41,15 @@
     font-weight: 600;
 }
 
-.wpcp-preview-content {
+.wpcp-preview-mode {
+    background: rgba(255, 255, 255, 0.12);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.wpcp-block-preview-content {
     padding: 20px;
 }
 
@@ -62,27 +68,21 @@
 }
 
 .wpcp-feature-badge {
-    background: #f0f6fc;
-    color: #2271b1;
+    background: #f1f5f9;
+    color: #475569;
     padding: 6px 12px;
     border-radius: 4px;
     font-size: 12px;
     font-weight: 600;
-    border: 1px solid #c3dcf5;
+    border: 1px solid #e2e8f0;
 }
 
 .wpcp-preview-overrides {
-    background: #fcf9e8;
-    border-left: 4px solid #dba617;
+    background: #fffbeb;
+    border-left: 4px solid #d97706;
     padding: 12px;
     border-radius: 4px;
     font-size: 13px;
-}
-
-.wpcp-preview-overrides strong {
-    display: block;
-    margin-bottom: 8px;
-    color: #996800;
 }
 
 .wpcp-preview-overrides span {
@@ -91,23 +91,23 @@
     margin-bottom: 4px;
 }
 
-.wpcp-preview-footer {
-    background: #f6f7f7;
-    border-top: 1px solid #dcdcde;
+.wpcp-block-preview-footer {
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
     padding: 12px 20px;
 }
 
-.wpcp-preview-footer p {
+.wpcp-block-preview-footer p {
     margin: 0;
-    color: #646970;
+    color: #64748b;
     font-size: 13px;
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-.wpcp-preview-footer .dashicons {
-    color: #2271b1;
+.wpcp-block-preview-footer .dashicons {
+    color: #64748b;
     font-size: 18px;
     width: 18px;
     height: 18px;
@@ -131,17 +131,17 @@
 }
 
 .wp-block[data-type="cite/block"].is-selected {
-    border-color: #2271b1;
+    border-color: #64748b;
 }
 
 /* Responsive Preview */
 @media (max-width: 782px) {
-    .wpcp-preview-header {
+    .wpcp-block-preview-header {
         font-size: 14px;
         padding: 12px 15px;
     }
     
-    .wpcp-preview-content {
+    .wpcp-block-preview-content {
         padding: 15px;
     }
     

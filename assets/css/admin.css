@@ -1,18 +1,18 @@
 /**
  * Cite Plugin - Admin Styles
- * Version: 2.1.5
- * Modern, minimalist design
+ * Version: 2.8.0
+ * Refined modern minimalist design with subdued color palette
  */
 
-/* CSS Variables */
+/* CSS Variables - Refined Modern Minimalist */
 :root {
-    --wpcp-primary: #2563eb;
-    --wpcp-primary-hover: #1d4ed8;
-    --wpcp-primary-light: #eff6ff;
-    --wpcp-success: #059669;
-    --wpcp-success-light: #ecfdf5;
-    --wpcp-warning: #d97706;
-    --wpcp-warning-light: #fffbeb;
+    --wpcp-primary: #64748b;
+    --wpcp-primary-hover: #475569;
+    --wpcp-primary-light: #f1f5f9;
+    --wpcp-success: #0891b2;
+    --wpcp-success-light: #ecfeff;
+    --wpcp-warning: #ea580c;
+    --wpcp-warning-light: #fff7ed;
     --wpcp-gray-50: #f9fafb;
     --wpcp-gray-100: #f3f4f6;
     --wpcp-gray-200: #e5e7eb;
@@ -28,6 +28,55 @@
     --wpcp-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
     --wpcp-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --wpcp-transition: all 0.2s ease;
+}
+
+/* Page Header */
+.wpcp-page-header {
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--wpcp-gray-200);
+}
+
+.wpcp-page-header-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 8px;
+}
+
+.wpcp-page-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--wpcp-gray-900);
+    letter-spacing: -0.02em;
+}
+
+.wpcp-page-title svg {
+    color: var(--wpcp-primary);
+    flex-shrink: 0;
+}
+
+.wpcp-version-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    background: var(--wpcp-primary-light);
+    color: var(--wpcp-primary);
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 6px;
+    letter-spacing: 0.02em;
+}
+
+.wpcp-page-description {
+    margin: 0;
+    color: var(--wpcp-gray-500);
+    font-size: 15px;
+    line-height: 1.5;
 }
 
 /* Admin Container */
@@ -316,6 +365,23 @@
     color: var(--wpcp-gray-700);
 }
 
+.wpcp-radio-desc {
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--wpcp-gray-400);
+    margin-top: 2px;
+}
+
+.wpcp-radio-card-stacked {
+    flex-direction: column;
+    text-align: center;
+}
+
+.wpcp-radio-card-stacked .wpcp-radio-text {
+    margin-top: 4px;
+}
+
 /* Checkbox Grid */
 .wpcp-checkbox-grid {
     display: grid;
@@ -375,6 +441,72 @@
 .wpcp-checkbox-text {
     font-size: 13px;
     color: var(--wpcp-gray-700);
+}
+
+/* Export Format Grid */
+.wpcp-export-format-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 10px;
+}
+
+.wpcp-export-format-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 14px;
+    background: var(--wpcp-gray-50);
+    border: 1px solid var(--wpcp-gray-200);
+    border-radius: var(--wpcp-radius);
+    cursor: pointer;
+    transition: var(--wpcp-transition);
+}
+
+.wpcp-export-format-item:hover {
+    background: #fff;
+    border-color: var(--wpcp-gray-300);
+}
+
+.wpcp-export-format-item input[type="checkbox"] {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    margin-top: 1px;
+    accent-color: var(--wpcp-primary);
+    cursor: pointer;
+}
+
+.wpcp-export-format-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.wpcp-export-format-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--wpcp-gray-700);
+}
+
+.wpcp-export-format-ext {
+    font-size: 11px;
+    font-family: monospace;
+    color: var(--wpcp-gray-400);
+    background: var(--wpcp-gray-100);
+    padding: 1px 5px;
+    border-radius: 3px;
+}
+
+.wpcp-export-format-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.wpcp-export-format-desc {
+    font-size: 12px;
+    color: var(--wpcp-gray-400);
 }
 
 /* Textarea */
@@ -507,11 +639,155 @@
     color: var(--wpcp-gray-800);
 }
 
+.wpcp-btn-danger {
+    background: #fff;
+    color: #dc2626;
+    border: 1px solid #fca5a5;
+}
+
+.wpcp-btn-danger:hover {
+    background: #fef2f2;
+    border-color: #ef4444;
+    color: #b91c1c;
+}
+
+.wpcp-btn-danger-solid {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 20px;
+    background: #dc2626;
+    color: #fff;
+    border: none;
+    border-radius: var(--wpcp-radius);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--wpcp-transition);
+    box-shadow: 0 1px 2px rgba(220, 38, 38, 0.2);
+}
+
+.wpcp-btn-danger-solid:hover {
+    background: #b91c1c;
+    box-shadow: 0 2px 4px rgba(220, 38, 38, 0.3);
+    transform: translateY(-1px);
+}
+
+.wpcp-btn-danger-solid svg {
+    flex-shrink: 0;
+}
+
+/* Privacy & Data Management Section */
+.wpcp-privacy-management-section {
+    margin-top: 32px;
+}
+
+.wpcp-privacy-info h4 {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--wpcp-gray-800);
+}
+
+.wpcp-privacy-info ul {
+    margin: 0 0 16px 0;
+    padding: 0 0 0 20px;
+    list-style: none;
+}
+
+.wpcp-privacy-info ul li {
+    position: relative;
+    margin-bottom: 8px;
+    padding-left: 8px;
+    font-size: 14px;
+    color: var(--wpcp-gray-600);
+    line-height: 1.5;
+}
+
+.wpcp-privacy-info ul li::before {
+    content: '•';
+    position: absolute;
+    left: -12px;
+    color: var(--wpcp-primary);
+    font-weight: 600;
+}
+
+.wpcp-privacy-note {
+    margin: 16px 0 0 0;
+    padding: 12px 16px;
+    background: var(--wpcp-gray-50);
+    border-left: 3px solid var(--wpcp-primary);
+    border-radius: var(--wpcp-radius);
+    font-size: 13px;
+    color: var(--wpcp-gray-600);
+    line-height: 1.5;
+}
+
+.wpcp-purge-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.wpcp-purge-warning {
+    display: flex;
+    gap: 12px;
+    padding: 14px 16px;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: var(--wpcp-radius);
+    font-size: 14px;
+    color: #991b1b;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.wpcp-purge-warning svg {
+    flex-shrink: 0;
+    color: #dc2626;
+    margin-top: 2px;
+}
+
+.wpcp-purge-form-analytics {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Danger Card Styling */
+.wpcp-card-danger .wpcp-card-header {
+    background: #fff5f5;
+    border-bottom-color: #feb2b2;
+}
+
+.wpcp-card-danger .wpcp-card-header h3 {
+    color: #c53030;
+}
+
+.wpcp-card-danger .wpcp-card-header h3 svg {
+    color: #f56565;
+}
+
+.wpcp-select {
+    padding: 8px 12px;
+    border: 1px solid var(--wpcp-gray-300);
+    border-radius: var(--wpcp-radius);
+    font-size: 14px;
+    background: #fff;
+    color: var(--wpcp-gray-700);
+    transition: var(--wpcp-transition);
+}
+
+.wpcp-select:focus {
+    outline: none;
+    border-color: var(--wpcp-primary);
+    box-shadow: 0 0 0 3px var(--wpcp-primary-light);
+}
+
 /* Preview */
 .wpcp-preview-wrapper {
     background: var(--wpcp-gray-100);
     border-radius: var(--wpcp-radius-lg);
-    overflow: hidden;
+    overflow: visible;
     box-shadow: var(--wpcp-shadow);
 }
 
@@ -521,6 +797,7 @@
     gap: 8px;
     padding: 12px 16px;
     background: var(--wpcp-gray-200);
+    border-radius: var(--wpcp-radius-lg) var(--wpcp-radius-lg) 0 0;
 }
 
 .wpcp-preview-dot {
@@ -543,6 +820,7 @@
 .wpcp-preview-content {
     padding: 24px;
     background: #fff;
+    border-radius: 0 0 var(--wpcp-radius-lg) var(--wpcp-radius-lg);
 }
 
 /* Shortcode Info */
@@ -675,11 +953,69 @@
     .wpcp-checkbox-grid {
         grid-template-columns: 1fr;
     }
+    
+    .wpcp-purge-warning {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .wpcp-purge-form-analytics {
+        justify-content: stretch;
+    }
+    
+    .wpcp-btn-danger-solid {
+        width: 100%;
+        justify-content: center;
+    }
 }
 
 /* =============================================================================
    ANALYTICS PAGE STYLES
    ============================================================================= */
+
+/* Analytics Notice Banner */
+.wpcp-analytics-notice {
+    display: flex;
+    gap: 16px;
+    padding: 20px;
+    margin-bottom: 24px;
+    background: var(--wpcp-success-light);
+    border: 1px solid #a5f3fc;
+    border-left: 4px solid var(--wpcp-success);
+    border-radius: var(--wpcp-radius);
+}
+
+.wpcp-analytics-notice-icon {
+    flex-shrink: 0;
+}
+
+.wpcp-analytics-notice-icon svg {
+    color: var(--wpcp-success);
+}
+
+.wpcp-analytics-notice-content h4 {
+    margin: 0 0 6px 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #0e7490;
+}
+
+.wpcp-analytics-notice-content p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--wpcp-gray-700);
+    line-height: 1.5;
+}
+
+.wpcp-analytics-notice-content a {
+    color: var(--wpcp-success);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.wpcp-analytics-notice-content a:hover {
+    text-decoration: underline;
+}
 
 /* Stats Overview */
 .wpcp-stats-overview {
@@ -713,15 +1049,15 @@
 }
 
 .wpcp-stat-views {
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    background: linear-gradient(135deg, #64748b, #475569);
 }
 
 .wpcp-stat-copies {
-    background: linear-gradient(135deg, #10b981, #059669);
+    background: linear-gradient(135deg, #0891b2, #0e7490);
 }
 
 .wpcp-stat-exports {
-    background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+    background: linear-gradient(135deg, #ea580c, #c2410c);
 }
 
 .wpcp-stat-info {
@@ -793,8 +1129,8 @@
 }
 
 .wpcp-format-badge {
-    background: #f3e8ff;
-    color: #7c3aed;
+    background: var(--wpcp-warning-light);
+    color: var(--wpcp-warning);
 }
 
 .wpcp-count {
@@ -837,5 +1173,148 @@
     
     .wpcp-analytics-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================================================
+   FORMAT SELECTION TAB (v2.4.0)
+   ========================================================================= */
+
+.wpcp-formats-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.wpcp-bulk-actions {
+    display: flex;
+    gap: 12px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--wpcp-gray-200);
+    margin-bottom: 8px;
+}
+
+.wpcp-format-category {
+    margin-bottom: 0;
+}
+
+.wpcp-format-category .wpcp-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wpcp-format-count {
+    font-size: 13px;
+    color: var(--wpcp-gray-500);
+    font-weight: 500;
+}
+
+.wpcp-format-checkboxes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+}
+
+.wpcp-format-checkbox {
+    display: flex;
+    align-items: flex-start;
+    padding: 12px;
+    border: 2px solid var(--wpcp-gray-200);
+    border-radius: var(--wpcp-radius);
+    cursor: pointer;
+    transition: var(--wpcp-transition);
+    background: white;
+}
+
+.wpcp-format-checkbox:hover {
+    border-color: var(--wpcp-primary);
+    background: var(--wpcp-primary-light);
+}
+
+.wpcp-format-checkbox input[type="checkbox"] {
+    margin: 2px 12px 0 0;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.wpcp-format-checkbox input[type="checkbox"]:checked ~ .wpcp-format-checkbox-content {
+    opacity: 1;
+}
+
+.wpcp-format-checkbox input[type="checkbox"]:not(:checked) ~ .wpcp-format-checkbox-content {
+    opacity: 0.5;
+}
+
+.wpcp-format-checkbox-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1;
+    transition: var(--wpcp-transition);
+}
+
+.wpcp-format-checkbox .wpcp-format-icon {
+    font-size: 20px;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.wpcp-format-checkbox .wpcp-format-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.wpcp-format-checkbox .wpcp-format-info strong {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--wpcp-gray-900);
+}
+
+.wpcp-format-checkbox .wpcp-format-description {
+    font-size: 12px;
+    color: var(--wpcp-gray-500);
+    line-height: 1.4;
+}
+
+/* Notice styles */
+.wpcp-notice {
+    display: flex;
+    gap: 12px;
+    padding: 16px;
+    border-radius: var(--wpcp-radius);
+    background: var(--wpcp-gray-50);
+    border-left: 4px solid var(--wpcp-gray-400);
+}
+
+.wpcp-notice-info {
+    background: var(--wpcp-success-light);
+    border-left-color: var(--wpcp-success);
+}
+
+.wpcp-notice svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.wpcp-notice strong {
+    font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .wpcp-format-checkboxes {
+        grid-template-columns: 1fr;
+    }
+    
+    .wpcp-bulk-actions {
+        flex-direction: column;
+    }
+    
+    .wpcp-bulk-actions .wpcp-btn {
+        width: 100%;
     }
 }

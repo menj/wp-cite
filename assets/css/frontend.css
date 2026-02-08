@@ -1,29 +1,41 @@
 /**
  * Cite Plugin - Frontend Styles
- * Version: 2.1.5
+ * Version: 2.8.0
+ *
+ * Colour palette aligned to Cite admin (slate / cyan design tokens):
+ *   Primary:      #64748b (slate-500)   – active states, focus rings
+ *   Primary-hover: #475569 (slate-600)  – hover states
+ *   Accent:       #0891b2 (cyan-600)    – links, notification badge
+ *   Accent-hover: #0e7490 (cyan-700)    – link hover
+ *   Gray scale:   Tailwind slate (f9fafb → 111827)
  */
 
-/* Font - using system fonts for GDPR compliance, with Roboto as enhancement if available */
+/* =============================================================================
+   FOUNDATION
+   ============================================================================= */
+
 .wpcp-citation-box,
 .wpcp-citation-box * {
     font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
 }
 
-/* Force light mode for citation box */
 .wpcp-citation-box {
     margin: 30px 0;
     border: 2px dotted #d1d5db;
     padding: 20px;
     background: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
     position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease;
+    overflow: visible;
+    transition: all 0.2s ease;
     color: #1f2937;
 }
 
-/* Citation header */
+/* =============================================================================
+   CITATION HEADER
+   ============================================================================= */
+
 .wpcp-citation-box .citation-header {
     margin-bottom: 15px;
 }
@@ -47,11 +59,14 @@
     font-weight: 600;
 }
 
-/* Dropdown select - using class selector to match dynamic IDs */
+/* =============================================================================
+   DROPDOWN MODE (default)
+   ============================================================================= */
+
 .wpcp-citation-box .citation-style-select {
     padding: 8px 32px 8px 12px;
     border: 1px solid #d1d5db;
-    border-radius: 4px;
+    border-radius: 6px;
     background: #f9fafb;
     color: #1f2937;
     font-size: 14px;
@@ -59,7 +74,7 @@
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"%3E%3Cpath fill="%23333" d="M2 0L0 2h4zm0 5L0 3h4z"/%3E%3C/svg%3E');
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"%3E%3Cpath fill="%2364748b" d="M2 0L0 2h4zm0 5L0 3h4z"/%3E%3C/svg%3E');
     background-repeat: no-repeat;
     background-position: right 0.5em top 50%;
     background-size: 0.65em auto;
@@ -72,7 +87,7 @@
 }
 
 .wpcp-citation-box .citation-style-select:focus {
-    outline: 2px solid #2563eb;
+    outline: 2px solid #64748b;
     outline-offset: 2px;
 }
 
@@ -80,13 +95,119 @@
     display: none;
 }
 
-/* Copy button */
+/* =============================================================================
+   TABS MODE
+   ============================================================================= */
+
+.wpcp-citation-box .wpcp-style-tabs {
+    display: inline-flex;
+    flex-wrap: wrap;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.wpcp-citation-box .wpcp-style-tab {
+    padding: 6px 14px;
+    border: none;
+    border-right: 1px solid #e5e7eb;
+    background: #f9fafb;
+    color: #4b5563;
+    cursor: pointer;
+    font-size: 0.85em;
+    font-family: inherit;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+    line-height: 1.4;
+}
+
+.wpcp-citation-box .wpcp-style-tab:last-child {
+    border-right: none;
+}
+
+.wpcp-citation-box .wpcp-style-tab:hover {
+    background: #f3f4f6;
+}
+
+.wpcp-citation-box .wpcp-style-tab:focus-visible {
+    outline: 2px solid #64748b;
+    outline-offset: -2px;
+    z-index: 1;
+}
+
+.wpcp-citation-box .wpcp-style-tab--active {
+    background: #64748b;
+    color: #ffffff;
+}
+
+.wpcp-citation-box .wpcp-style-tab--active:hover {
+    background: #475569;
+}
+
+/* =============================================================================
+   BUTTONS (PILL) MODE
+   ============================================================================= */
+
+.wpcp-citation-box .wpcp-style-buttons {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.wpcp-citation-box .wpcp-style-btn {
+    padding: 5px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 20px;
+    background: #ffffff;
+    color: #4b5563;
+    cursor: pointer;
+    font-size: 0.83em;
+    font-family: inherit;
+    font-weight: 500;
+    transition: all 0.2s;
+    white-space: nowrap;
+    line-height: 1.4;
+}
+
+.wpcp-citation-box .wpcp-style-btn:hover {
+    border-color: #64748b;
+    color: #64748b;
+}
+
+.wpcp-citation-box .wpcp-style-btn:focus-visible {
+    outline: 2px solid #64748b;
+    outline-offset: 2px;
+}
+
+.wpcp-citation-box .wpcp-style-btn--active {
+    background: #64748b;
+    color: #ffffff;
+    border-color: #64748b;
+}
+
+.wpcp-citation-box .wpcp-style-btn--active:hover {
+    background: #475569;
+    border-color: #475569;
+}
+
+/* Single format label (when only 1 format, no selector) */
+.wpcp-citation-box .wpcp-single-format-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #64748b;
+}
+
+/* =============================================================================
+   ACTION BUTTONS (copy, export, toggle)
+   ============================================================================= */
+
 .wpcp-citation-box .copy-button {
     padding: 8px 12px;
     border: 1px solid #d1d5db;
-    border-radius: 4px;
+    border-radius: 6px;
     background: #f9fafb;
-    color: #1f2937;
+    color: #4b5563;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
@@ -103,7 +224,7 @@
 }
 
 .wpcp-citation-box .copy-button:focus {
-    outline: 2px solid #2563eb;
+    outline: 2px solid #64748b;
     outline-offset: 2px;
 }
 
@@ -125,9 +246,9 @@
 .wpcp-citation-box .export-button {
     padding: 8px 12px;
     border: 1px solid #d1d5db;
-    border-radius: 4px;
+    border-radius: 6px;
     background: #f9fafb;
-    color: #1f2937;
+    color: #4b5563;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
@@ -144,7 +265,7 @@
 }
 
 .wpcp-citation-box .export-button:focus {
-    outline: 2px solid #2563eb;
+    outline: 2px solid #64748b;
     outline-offset: 2px;
 }
 
@@ -159,10 +280,10 @@
     right: 0;
     margin-top: 5px;
     background: #ffffff;
-    border: 1px solid #d1d5db;
-    border-radius: 4px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    min-width: 180px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    min-width: 190px;
     z-index: 1000;
     display: none;
     flex-direction: column;
@@ -188,26 +309,30 @@
     background: #f3f4f6;
 }
 
+.wpcp-citation-box .export-option + .export-option {
+    border-top: 1px solid #f3f4f6;
+}
+
 .wpcp-citation-box .export-option:focus {
-    outline: 2px solid #2563eb;
+    outline: 2px solid #64748b;
     outline-offset: -2px;
 }
 
 .wpcp-citation-box .export-option:first-child {
-    border-radius: 4px 4px 0 0;
+    border-radius: 6px 6px 0 0;
 }
 
 .wpcp-citation-box .export-option:last-child {
-    border-radius: 0 0 4px 4px;
+    border-radius: 0 0 6px 6px;
 }
 
 /* Toggle button */
 .wpcp-citation-box .toggle-button {
     padding: 8px 12px;
     border: 1px solid #d1d5db;
-    border-radius: 4px;
+    border-radius: 6px;
     background: #f9fafb;
-    color: #1f2937;
+    color: #4b5563;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
@@ -223,7 +348,7 @@
 }
 
 .wpcp-citation-box .toggle-button:focus {
-    outline: 2px solid #2563eb;
+    outline: 2px solid #64748b;
     outline-offset: 2px;
 }
 
@@ -237,7 +362,10 @@
     transition: transform 0.3s ease;
 }
 
-/* Citation content */
+/* =============================================================================
+   CITATION CONTENT & OUTPUT
+   ============================================================================= */
+
 .wpcp-citation-box .citation-content {
     max-height: 500px;
     overflow: hidden;
@@ -257,12 +385,15 @@
 }
 
 .wpcp-citation-box .citation-output a {
-    color: #2563eb;
+    color: #0891b2;
     text-decoration: underline;
+    text-decoration-color: rgba(8, 145, 178, 0.3);
+    text-underline-offset: 2px;
 }
 
 .wpcp-citation-box .citation-output a:hover {
-    color: #1d4ed8;
+    color: #0e7490;
+    text-decoration-color: #0e7490;
 }
 
 /* Copy notification */
@@ -271,13 +402,13 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #10b981;
+    background: #0891b2;
     color: #ffffff;
     padding: 12px 24px;
     border-radius: 6px;
     font-size: 14px;
     font-weight: 500;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
@@ -288,35 +419,163 @@
     opacity: 1;
 }
 
-/* Responsive design */
+/* Wikipedia citation format */
+.wpcp-citation-box .citation-output.wikipedia-format {
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 13px;
+    background: #f9fafb;
+    padding: 12px 15px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: #1f2937;
+    line-height: 1.6;
+}
+
+/* =============================================================================
+   INLINE CITATION MODE (Feature #03)
+   ============================================================================= */
+
+.wpcp-inline-citation {
+    font-style: normal;
+    white-space: nowrap;
+}
+
+.wpcp-inline-citation a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px dotted currentColor;
+}
+
+.wpcp-inline-citation a:hover {
+    border-bottom-style: solid;
+}
+
+.wpcp-bibliography-citation {
+    display: inline;
+}
+
+/* =============================================================================
+   FOOTNOTE REFERENCE MARKERS (Feature #02)
+   ============================================================================= */
+
+.wpcp-ref-marker {
+    font-size: 0.8em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+.wpcp-ref-marker a {
+    color: #0891b2;
+    text-decoration: none;
+}
+
+.wpcp-ref-marker a:hover {
+    text-decoration: underline;
+}
+
+/* =============================================================================
+   BIBLIOGRAPHY (Feature #02)
+   ============================================================================= */
+
+.wpcp-bibliography {
+    margin-top: 2em;
+    padding-top: 1em;
+    border-top: 1px solid #e5e7eb;
+}
+
+.wpcp-bibliography-heading {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+    color: #1f2937;
+}
+
+.wpcp-bibliography-list {
+    padding-left: 1.5em;
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: #374151;
+}
+
+.wpcp-bibliography-entry {
+    margin-bottom: 0.5em;
+}
+
+.wpcp-bibliography-text {
+    display: inline;
+}
+
+.wpcp-bibliography-text a {
+    color: #0891b2;
+    text-decoration: underline;
+    text-decoration-color: rgba(8, 145, 178, 0.3);
+    text-underline-offset: 2px;
+}
+
+.wpcp-bibliography-text a:hover {
+    color: #0e7490;
+    text-decoration-color: #0e7490;
+}
+
+.wpcp-bibliography-backlink {
+    margin-left: 0.5em;
+    text-decoration: none;
+    font-size: 0.85em;
+    color: #9ca3af;
+}
+
+.wpcp-bibliography-backlink:hover {
+    color: #0891b2;
+}
+
+/* =============================================================================
+   RESPONSIVE
+   ============================================================================= */
+
 @media (max-width: 768px) {
     .wpcp-citation-box .citation-title {
         font-size: 12px;
     }
-    
+
     .wpcp-citation-box .citation-title img {
         width: 18px;
         height: 18px;
     }
-    
+
     .wpcp-citation-box .citation-style-select {
         font-size: 11px;
         padding: 5px 25px 5px 8px;
     }
-    
+
     .wpcp-citation-box .copy-button,
     .wpcp-citation-box .export-button,
     .wpcp-citation-box .toggle-button {
         padding: 5px 8px;
     }
-    
+
     .wpcp-citation-box .citation-output {
         font-size: 12px;
     }
-    
+
     .wpcp-citation-box .export-dropdown {
         right: auto;
         left: 0;
+    }
+
+    .wpcp-citation-box .wpcp-style-tabs {
+        flex-wrap: wrap;
+    }
+
+    .wpcp-citation-box .wpcp-style-tab {
+        font-size: 0.78em;
+        padding: 5px 10px;
+    }
+
+    .wpcp-citation-box .wpcp-style-btn {
+        font-size: 0.78em;
+        padding: 4px 10px;
     }
 }
 
@@ -324,17 +583,20 @@
     .wpcp-citation-box {
         padding: 12px;
     }
-    
+
     .wpcp-citation-box .citation-title {
         gap: 8px;
     }
-    
+
     .wpcp-citation-box .citation-output {
         font-size: 11px;
     }
 }
 
-/* Print styles */
+/* =============================================================================
+   PRINT
+   ============================================================================= */
+
 @media print {
     .wpcp-citation-box {
         border: 1px solid #000;
@@ -342,38 +604,32 @@
         box-shadow: none;
         page-break-inside: avoid;
     }
-    
+
     .wpcp-citation-box .copy-button,
     .wpcp-citation-box .export-button,
     .wpcp-citation-box .toggle-button {
         display: none;
     }
-    
+
     .wpcp-citation-box .citation-content {
         max-height: none !important;
         opacity: 1 !important;
     }
-    
+
     .wpcp-citation-box .citation-output {
         color: #000;
     }
-    
+
     .wpcp-citation-box .citation-output a {
         color: #000;
         text-decoration: underline;
     }
-}
 
-/* Wikipedia citation format - monospace styling */
-.wpcp-citation-box .citation-output.wikipedia-format {
-    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-    font-size: 13px;
-    background: #f8f9fa;
-    padding: 12px 15px;
-    border: 1px solid #eaecf0;
-    border-radius: 4px;
-    white-space: pre-wrap;
-    word-break: break-word;
-    color: #202122;
-    line-height: 1.6;
+    .wpcp-bibliography {
+        page-break-inside: avoid;
+    }
+
+    .wpcp-bibliography-backlink {
+        display: none;
+    }
 }
